@@ -16,6 +16,6 @@ spec:
       - name: nginx
         image: localhost:5000/my-nginx
         imagePullPolicy: Always
-        port:
+        ports:
         - containerPort: 80
           name: http
