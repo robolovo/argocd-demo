@@ -39,7 +39,7 @@ spec:
       - name: myapp
         image: dlwnstj21/demo-app:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 8083
         imagePullPolicy: Always
 
 ---
