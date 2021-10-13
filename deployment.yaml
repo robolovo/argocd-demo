@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: mynginx
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       run: mynginx
@@ -26,7 +26,7 @@ kind: Deployment
 metadata:
   name: myapp
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       run: myapp
@@ -49,7 +49,7 @@ kind: Deployment
 metadata:
   name: mydb
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       run: mydb
