@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: mynginx
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       run: mynginx
@@ -40,4 +40,27 @@ spec:
         image: dlwnstj21/demo-app:latest
         ports:
         - containerPort: 8080
+        imagePullPolicy: Always
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydb
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: mydb
+  template:
+    metadata:
+      labels:
+        run: mydb
+    spec:
+      containers:
+      - name: mydb
+        image: dlwnstj21/mydb:latest
+        ports:
+        - containerPort: 3306
         imagePullPolicy: Always
