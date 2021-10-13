@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: mynginx
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       run: mynginx
@@ -13,7 +13,8 @@ spec:
         run: mynginx
     spec:
       containers:
-      - image: nginx
-        name: mynginx
+      - name: mynginx
+        image: dlwnstj21/mynginx:latest
         ports:
         - containerPort: 80
+        imagePullPolicy: Always
