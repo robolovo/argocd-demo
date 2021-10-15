@@ -38,9 +38,9 @@ spec:
       containers:
       - name: myapp
         image: dlwnstj21/demo-app:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
-        imagePullPolicy: Always
 
 ---
 
@@ -49,7 +49,7 @@ kind: Deployment
 metadata:
   name: mydb
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       run: mydb
@@ -63,4 +63,27 @@ spec:
         image: dlwnstj21/mydb:latest
         ports:
         - containerPort: 3306
+        imagePullPolicy: Always
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpmyadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: phpmyadmin
+  template:
+    metadata:
+      labels:
+        run: phpmyadmin
+    spec:
+      containers:
+      - name: phpmyadmin
+        image: dlwnstj21/phpmyadmin:latest
+        ports:
+        - containerPort: 5000
         imagePullPolicy: Always

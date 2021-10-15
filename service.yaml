@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: mynginx
 spec:
+  type: LoadBalancer
+  loadBalancerIP: 192.168.1.13
   ports:
   - port: 80
     protocol: TCP
@@ -17,6 +19,8 @@ kind: Service
 metadata:
   name: myapp
 spec:
+  type: LoadBalancer
+  loadBalancerIP: 192.168.1.11
   ports:
   - port: 8080
     protocol: TCP
@@ -31,9 +35,28 @@ kind: Service
 metadata:
   name: mydb
 spec:
+  type: LoadBalancer
+  loadBalancerIP: 192.168.1.12
   ports:
   - port: 3306
     protocol: TCP
     targetPort: 3306
   selector:
     run: mydb
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: phpmyadmin
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 192.168.1.14
+  selector:
+    run: phpmyadmin
+  ports:
+    - name: php-port
+      protocol: TCP
+      port: 5000
+      targetPort: 5000
